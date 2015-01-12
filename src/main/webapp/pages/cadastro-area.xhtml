@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="/template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="cadastroForm">
+                    <h:inputHidden id="idInputHidden" value="#{areaMB.areaVO.id}" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="nomeInputText" value="#{messages['texto.label.nome']}" />
+                        <p:inputText id="nomeInputText" value="#{areaMB.areaVO.nome}" />
+                    </p:panelGrid>
+                    <p:separator />
+                    <p:commandButton value="#{messages['texto.label.botao.salvar']}" actionListener="#{areaMB.salvar()}" process="@form" update="@all" ajax="true" />
+                    <br/>
+                    <br/>
+                    <p:dataTable id="areasDataTable" value="#{areaMB.areas}" var="area">
+                        <p:column>
+                            <h:outputText value="#{area.id}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{area.nome}" />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="#{messages['texto.label.botao.editar']}" actionListener="#{areaMB.editar(area)}" ajax="true" process="@this" update="@form" />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="#{messages['texto.label.botao.deletar']}" actionListener="#{areaMB.deletar(area)}" ajax="true" process="@this" update="@form" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
