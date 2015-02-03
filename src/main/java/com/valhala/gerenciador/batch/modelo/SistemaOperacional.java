@@ -11,6 +11,29 @@ package com.valhala.gerenciador.batch.modelo;
  */
 public enum SistemaOperacional {
     
-    WINDOWS, LINUX, UNIX
+    /**
+     *
+     */
+    WINDOWS("Windows"),
+
+    /**
+     *
+     */
+    LINUX("Linux"),
+
+    /**
+     *
+     */
+    UNIX("Unix");
+    
+    private String nome;
+
+    private SistemaOperacional(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
     
 }

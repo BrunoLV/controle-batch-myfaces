@@ -11,13 +11,39 @@ import java.util.List;
 /**
  *
  * @author Bruno
+ * @param <T>
  */
 public interface Dao<T> {
     
+    /**
+     *
+     * @param t
+     */
     void inserir(T t);
+
+    /**
+     *
+     * @param t
+     */
     void atualizar(T t );
+
+    /**
+     *
+     * @param t
+     */
     void deletar(Serializable t);
     
+    /**
+     *
+     * @param id
+     * @return
+     */
+    T buscarPorId(Serializable id);
+    
+    /**
+     *
+     * @return
+     */
     List<T> listarTodos();
     
 }

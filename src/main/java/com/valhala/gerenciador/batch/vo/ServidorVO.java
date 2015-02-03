@@ -3,36 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.valhala.gerenciador.batch.modelo;
+package com.valhala.gerenciador.batch.vo;
 
+import com.valhala.gerenciador.batch.modelo.Servidor;
+import com.valhala.gerenciador.batch.modelo.SistemaOperacional;
 import java.io.Serializable;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Bruno
  */
-@Entity
-@Table(name = "tb_servidor")
-public class Servidor implements Serializable {
+public class ServidorVO implements Serializable {
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @Enumerated(EnumType.STRING)
     private SistemaOperacional sistemaOperacional;
 
     /**
      * Construtor
      */
-    public Servidor() {
+    public ServidorVO() {
         super();
     }
 
@@ -42,7 +32,7 @@ public class Servidor implements Serializable {
      * @param nome
      * @param sistemaOperacional
      */
-    public Servidor(Long id, String nome, SistemaOperacional sistemaOperacional) {
+    public ServidorVO(Long id, String nome, SistemaOperacional sistemaOperacional) {
         super();
         this.id = id;
         this.nome = nome;
@@ -96,34 +86,28 @@ public class Servidor implements Serializable {
     public void setSistemaOperacional(SistemaOperacional sistemaOperacional) {
         this.sistemaOperacional = sistemaOperacional;
     }
-
+    
     @Override
     public String toString() {
-        return "Servidor{" + "id=" + id + ", nome=" + nome + ", sistemaOperacional=" + sistemaOperacional + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Servidor other = (Servidor) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return "ServidorVO{" + "id=" + id + ", nome=" + nome + ", sistemaOperacional=" + sistemaOperacional + '}';
     }
     
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public static ServidorVO createFromModel(final Servidor s) {
+        return new ServidorVO(s.getId(), s.getNome(), s.getSistemaOperacional());
+    }
     
+    /**
+     *
+     * @param vO
+     * @return
+     */
+    public static Servidor returnAsModel(final ServidorVO vO) {
+        return new Servidor(vO.getId(), vO.getNome(), vO.getSistemaOperacional());
+    }
     
 }

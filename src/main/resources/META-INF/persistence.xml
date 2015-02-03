@@ -16,7 +16,7 @@
         <property name="javax.persistence.jdbc.user" value="root" />
         <property name="javax.persistence.jdbc.password" value="root" />
         
-        <property name ="org.batoo.jpa.ddl" value="NONE" />
+        <property name ="org.batoo.jpa.ddl" value="CREATE" />
         <property name="org.batoo.jpa.sql_logging" value="STDOUT" />
     </properties>
 </persistence-unit>

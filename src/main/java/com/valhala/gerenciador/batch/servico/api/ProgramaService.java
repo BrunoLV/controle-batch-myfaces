@@ -5,40 +5,39 @@
  */
 package com.valhala.gerenciador.batch.servico.api;
 
-import com.valhala.gerenciador.batch.modelo.Area;
-import java.io.Serializable;
+import com.valhala.gerenciador.batch.modelo.Programa;
 import java.util.List;
 
 /**
  *
  * @author Bruno
  */
-public interface AreaService {
+public interface ProgramaService {
     
     /**
      *
-     * @param area
+     * @param programa
      */
-    void cadastrarArea(final Area area);
+    void cadastrarPrograma(final Programa programa);
 
     /**
      *
-     * @param area
+     * @param programa
      */
-    void atualizarArea(final Area area);
+    void atualizarPrograma(final Programa programa);
 
     /**
      *
-     * @param area
+     * @param programa
      */
-    void deletarArea(final Area area);
+    void deletarPrograma(final Programa programa);
 
-    Area buscarPorId(final Serializable id);
-    
     /**
      *
      * @return
      */
-    List<Area> listarTodasAreas();
+    List<Programa> listarTodosProgramas();
+    
+    Programa buscarProgramaJuntoComServidor(Programa p);
     
 }

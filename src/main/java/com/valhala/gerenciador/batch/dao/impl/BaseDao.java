@@ -6,7 +6,6 @@
 package com.valhala.gerenciador.batch.dao.impl;
 
 import com.valhala.gerenciador.batch.dao.api.Dao;
-import com.valhala.gerenciador.batch.modelo.Area;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -18,6 +17,10 @@ import javax.persistence.EntityManager;
  */
 public abstract class BaseDao <T> implements Dao<T> {
 
+    protected Class<T> classePersistente;
+    /**
+     *
+     */
     @Inject
     protected EntityManager em;
     
@@ -33,9 +36,12 @@ public abstract class BaseDao <T> implements Dao<T> {
 
     @Override
     public void deletar(Serializable t) {
-        em.remove(em.getReference(Area.class, t));
+        em.remove(em.getReference(classePersistente, t));
     }
-    
-    
+
+    @Override
+    public T buscarPorId(Serializable id) {
+        return em.find(classePersistente, id);
+    }
     
 }

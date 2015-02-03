@@ -15,45 +15,45 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:form id="cadastroForm">
                     <p:growl autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true" life="1000" sticky="true" />
-                    <p:panel header="#{messages['texto.header.panel.areas']}">
-                        <h:inputHidden id="idInputHidden" value="#{areaMB.areaVO.id}" />
+                    <p:panel header="#{messages['texto.header.panel.plataformas']}">
+                        <h:inputHidden id="idInputHidden" value="#{plataformaMB.plataformaVO.id}" />
                         <br />
                         <p:panelGrid columns="2">
                             <p:outputLabel for="nomeInputText" value="#{messages['texto.label.nome']}" />
-                            <p:inputText id="nomeInputText" value="#{areaMB.areaVO.nome}" placeholder="#{messages['texto.placeholder.nome']}" />
+                            <p:inputText id="nomeInputText" value="#{plataformaMB.plataformaVO.nome}" placeholder="#{messages['texto.placeholder.nome']}" />
                         </p:panelGrid>
                         <p:separator />
-                        <p:commandLink id="salvarCommandLink" actionListener="#{areaMB.salvar()}" process="@form" update="@all" ajax="true">
+                        <p:commandLink id="salvarCommandLink" actionListener="#{plataformaMB.salvar()}" process="@form" update="@all" ajax="true">
                             <p:graphicImage library="default" name="images/save.png" />
                         </p:commandLink>
                         <p:spacer height="10" width="10" />
-                        <p:commandLink id="limparCommandLink" actionListener="#{areaMB.limpar()}" process="@this" update="@all" ajax="true">
+                        <p:commandLink id="limparCommandLink" actionListener="#{plataformaMB.limpar()}" process="@this" update="@all" ajax="true">
                             <p:graphicImage library="default" name="images/clean.png" />
                         </p:commandLink>
                         <p:tooltip for="salvarCommandLink" value="#{messages['texto.label.botao.salvar']}" />
                         <p:tooltip for="limparCommandLink" value="#{messages['texto.label.botato.limpar']}" />
                         <br/>
                         <br/>
-                        <p:dataTable id="areasDataTable" value="#{areaMB.areas}" var="area" rows="10"
+                        <p:dataTable id="plataformasDataTable" value="#{plataformaMB.plataformas}" var="plataforma" rows="10"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="10,20,30">
                             <f:facet name="header">
-                                <h:outputText value="#{messages['texto.header.table.areas']}" />
+                                <h:outputText value="#{messages['texto.header.table.plataformas']}" />
                             </f:facet>
                             <p:column headerText="#{messages['texto.header.table.id']}">
-                                <h:outputText value="#{area.id}" />
+                                <h:outputText value="#{plataforma.id}" />
                             </p:column>
                             <p:column headerText="#{messages['texto.header.table.nome']}">
-                                <h:outputText value="#{area.nome}" />
+                                <h:outputText value="#{plataforma.nome}" />
                             </p:column>
                             <p:column>
-                                <p:commandLink id="editarCommandLink" actionListener="#{areaMB.editar(area)}" ajax="true" process="@this" update="@form">
+                                <p:commandLink id="editarCommandLink" actionListener="#{plataformaMB.editar(plataforma)}" ajax="true" process="@this" update="@form">
                                     <p:graphicImage library="default" name="images/edit.png" />
                                 </p:commandLink>
                                 <p:tooltip for="editarCommandLink" value="#{messages['texto.label.botao.editar']}" />
                                 <p:spacer height="5" width="5" />
-                                <p:commandLink id="deletarCommandLink" actionListener="#{areaMB.deletar(area)}" ajax="true" process="@this" update="@form" >
+                                <p:commandLink id="deletarCommandLink" actionListener="#{plataformaMB.deletar(plataforma)}" ajax="true" process="@this" update="@form" >
                                     <p:graphicImage library="default" name="images/delete.png" />
                                     <p:confirm header="#{messages['texto.mensagem.confirmacao.header']}" message="#{messages['texto.mensagem.confirmacao.pergunta']}" icon="ui-icon-alert" />
                                 </p:commandLink>

@@ -20,32 +20,56 @@ import javax.persistence.Table;
 @Table(name = "tb_area")
 public class Area implements Serializable {
     
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
+    /**
+     * Construtor
+     */
     public Area() {
         super();
     }
 
+    /**
+     *
+     * @param id
+     * @param nome
+     */
     public Area(Long id, String nome) {
         super();
         this.id = id;
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     *
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }

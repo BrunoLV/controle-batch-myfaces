@@ -16,6 +16,11 @@ import org.slf4j.LoggerFactory;
  */
 public class ProdutorLogger {
     
+    /**
+     *
+     * @param ip
+     * @return
+     */
     @Produces
     public Logger produzirLogger(InjectionPoint ip) {
         return LoggerFactory.getLogger(ip.getBean().getBeanClass());

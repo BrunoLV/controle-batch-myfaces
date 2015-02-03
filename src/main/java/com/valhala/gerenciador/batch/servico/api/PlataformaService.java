@@ -5,7 +5,7 @@
  */
 package com.valhala.gerenciador.batch.servico.api;
 
-import com.valhala.gerenciador.batch.modelo.Area;
+import com.valhala.gerenciador.batch.modelo.Plataforma;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,32 +13,32 @@ import java.util.List;
  *
  * @author Bruno
  */
-public interface AreaService {
+public interface PlataformaService {
     
-    /**
+        /**
      *
-     * @param area
+     * @param plataforma
      */
-    void cadastrarArea(final Area area);
+    void cadastrarPlataforma(final Plataforma plataforma);
 
     /**
      *
-     * @param area
+     * @param plataforma
      */
-    void atualizarArea(final Area area);
+    void atualizarPlataforma(final Plataforma plataforma);
 
     /**
      *
-     * @param area
+     * @param plataforma
      */
-    void deletarArea(final Area area);
-
-    Area buscarPorId(final Serializable id);
+    void deletarPlataforma(final Plataforma plataforma);
     
+    Plataforma buscarPorId(final Serializable id);
+
     /**
      *
      * @return
      */
-    List<Area> listarTodasAreas();
+    List<Plataforma> listarTodasPlataformas();
     
 }

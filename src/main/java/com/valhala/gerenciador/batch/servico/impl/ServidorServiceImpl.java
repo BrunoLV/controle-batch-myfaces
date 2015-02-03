@@ -5,9 +5,9 @@
  */
 package com.valhala.gerenciador.batch.servico.impl;
 
-import com.valhala.gerenciador.batch.dao.api.AreaDao;
-import com.valhala.gerenciador.batch.modelo.Area;
-import com.valhala.gerenciador.batch.servico.api.AreaService;
+import com.valhala.gerenciador.batch.dao.api.ServidorDao;
+import com.valhala.gerenciador.batch.modelo.Servidor;
+import com.valhala.gerenciador.batch.servico.api.ServidorService;
 import com.valhala.gerenciador.batch.support.interceptors.LogInterceptor;
 import com.valhala.gerenciador.batch.support.qualifiers.Logavel;
 import java.io.Serializable;
@@ -20,39 +20,39 @@ import javax.interceptor.Interceptors;
  * @author Bruno
  */
 @Interceptors({LogInterceptor.class})
-public class AreaServiceImpl implements AreaService {
-
+public class ServidorServiceImpl implements ServidorService {
+    
     @Inject
-    private AreaDao ad;
+    private ServidorDao sd;
 
     @Override
-    @Logavel 
-    public void cadastrarArea(Area area) {
-            ad.inserir(area);
-    }
-
-    @Override
-    @Logavel 
-    public void atualizarArea(Area area) {
-        ad.atualizar(area);
+    @Logavel
+    public void cadastrarServidor(Servidor servidor) {
+        sd.inserir(servidor);
     }
 
     @Override
     @Logavel
-    public List<Area> listarTodasAreas() {
-        return ad.listarTodos();
+    public void atualizarServidor(Servidor servidor) {
+        sd.atualizar(servidor);
     }
 
     @Override
     @Logavel
-    public void deletarArea(Area area) {
-        ad.deletar(area.getId());
+    public void deletarServidor(Servidor servidor) {
+        sd.deletar(servidor.getId());
     }
 
     @Override
     @Logavel
-    public Area buscarPorId(Serializable id) {
-        return ad.buscarPorId(id);
+    public List<Servidor> listarTodosServidores() {
+        return sd.listarTodos();
     }
 
+    @Override
+    @Logavel
+    public Servidor buscarPorId(Serializable id) {
+        return sd.buscarPorId(id);
+    }
+    
 }

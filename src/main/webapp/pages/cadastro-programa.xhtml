@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -15,45 +15,71 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:form id="cadastroForm">
                     <p:growl autoUpdate="true" globalOnly="true" showDetail="true" showSummary="true" life="1000" sticky="true" />
-                    <p:panel header="#{messages['texto.header.panel.areas']}">
-                        <h:inputHidden id="idInputHidden" value="#{areaMB.areaVO.id}" />
+                    <p:panel header="#{messages['texto.header.panel.plataformas']}">
+                        <h:inputHidden id="idInputHidden" value="#{programaMB.programa.id}" />
+
                         <br />
+
                         <p:panelGrid columns="2">
                             <p:outputLabel for="nomeInputText" value="#{messages['texto.label.nome']}" />
-                            <p:inputText id="nomeInputText" value="#{areaMB.areaVO.nome}" placeholder="#{messages['texto.placeholder.nome']}" />
+                            <p:inputText id="nomeInputText" value="#{programaMB.programa.nome}" placeholder="#{messages['texto.placeholder.nome']}" />
+
+                            <p:outputLabel for="areaList" value="#{messages['texto.label.area']}" />
+                            <p:selectOneMenu id="areaList" value="#{programaMB.programa.area.id}" >
+                                <f:selectItem noSelectionOption="true" itemLabel="#{messages['texto.label.selecao']}" />
+                                <f:selectItems value="#{programaMB.areas}" var="area" itemLabel="#{area.nome}" itemValue="#{area.id}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="plataformaList" value="#{messages['texto.label.plataforma']}" />
+                            <p:selectOneMenu id="plataformaList" value="#{programaMB.programa.plataforma.id}">
+                                <f:selectItem noSelectionOption="true" itemLabel="#{messages['texto.label.selecao']}" />
+                                <f:selectItems value="#{programaMB.plataformas}" var="plataforma" itemLabel="#{plataforma.nome}" itemValue="#{plataforma.id}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="servidorList" value="#{messages['texto.label.servidores']}" />
+                            <p:selectManyCheckbox id="servidorList" value="#{programaMB.servidoresSelecionados}" layout="grid" columns="5">
+                                <f:selectItems value="#{programaMB.servidores}" var="servidor" itemLabel="#{servidor.nome}"  itemValue="#{servidor.id}" />
+                            </p:selectManyCheckbox>
+
                         </p:panelGrid>
                         <p:separator />
-                        <p:commandLink id="salvarCommandLink" actionListener="#{areaMB.salvar()}" process="@form" update="@all" ajax="true">
+                        <p:commandLink id="salvarCommandLink" actionListener="#{programaMB.salvar()}" process="@form" update="@all" ajax="true">
                             <p:graphicImage library="default" name="images/save.png" />
                         </p:commandLink>
                         <p:spacer height="10" width="10" />
-                        <p:commandLink id="limparCommandLink" actionListener="#{areaMB.limpar()}" process="@this" update="@all" ajax="true">
+                        <p:commandLink id="limparCommandLink" actionListener="#{programaMB.limpar()}" process="@this" update="@all" ajax="true">
                             <p:graphicImage library="default" name="images/clean.png" />
                         </p:commandLink>
                         <p:tooltip for="salvarCommandLink" value="#{messages['texto.label.botao.salvar']}" />
                         <p:tooltip for="limparCommandLink" value="#{messages['texto.label.botato.limpar']}" />
                         <br/>
                         <br/>
-                        <p:dataTable id="areasDataTable" value="#{areaMB.areas}" var="area" rows="10"
+                        <p:dataTable id="programasDataTable" value="#{programaMB.programas}" var="programa" rows="10"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="10,20,30">
                             <f:facet name="header">
-                                <h:outputText value="#{messages['texto.header.table.areas']}" />
+                                <h:outputText value="#{messages['texto.header.table.plataformas']}" />
                             </f:facet>
                             <p:column headerText="#{messages['texto.header.table.id']}">
-                                <h:outputText value="#{area.id}" />
+                                <h:outputText value="#{programa.id}" />
                             </p:column>
                             <p:column headerText="#{messages['texto.header.table.nome']}">
-                                <h:outputText value="#{area.nome}" />
+                                <h:outputText value="#{programa.nome}" />
+                            </p:column>
+                            <p:column headerText="#{messages['texto.header.table.area']}">
+                                <h:outputText value="#{programa.area.nome}" />
+                            </p:column>
+                            <p:column headerText="#{messages['texto.header.table.plataforma']}">
+                                <h:outputText value="#{programa.plataforma.nome}" />
                             </p:column>
                             <p:column>
-                                <p:commandLink id="editarCommandLink" actionListener="#{areaMB.editar(area)}" ajax="true" process="@this" update="@form">
+                                <p:commandLink id="editarCommandLink" actionListener="#{programaMB.editar(programa)}" ajax="true" process="@this" update="@form">
                                     <p:graphicImage library="default" name="images/edit.png" />
                                 </p:commandLink>
                                 <p:tooltip for="editarCommandLink" value="#{messages['texto.label.botao.editar']}" />
                                 <p:spacer height="5" width="5" />
-                                <p:commandLink id="deletarCommandLink" actionListener="#{areaMB.deletar(area)}" ajax="true" process="@this" update="@form" >
+                                <p:commandLink id="deletarCommandLink" actionListener="#{programaMB.deletar(programa)}" ajax="true" process="@this" update="@form" >
                                     <p:graphicImage library="default" name="images/delete.png" />
                                     <p:confirm header="#{messages['texto.mensagem.confirmacao.header']}" message="#{messages['texto.mensagem.confirmacao.pergunta']}" icon="ui-icon-alert" />
                                 </p:commandLink>

@@ -21,6 +21,11 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
+                <div id="menu">
+                    <ui:insert name="menu">
+                        <ui:include src="menu.xhtml" />
+                    </ui:insert>
+                </div>
                 <div id="content">
                     <ui:insert name="content" />
                 </div>

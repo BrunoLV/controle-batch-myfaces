@@ -16,6 +16,11 @@ import javax.persistence.TypedQuery;
  */
 public class AreaDaoImpl extends BaseDao<Area> implements AreaDao {
 
+    public AreaDaoImpl() {
+        super();
+        classePersistente = Area.class;
+    }
+    
     @Override
     public List<Area> listarTodos() {
         String jpql = "SELECT a FROM Area AS a";
