@@ -9,41 +9,41 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
+ * Interface genérica que define as ações básicas de todos os DAO's do sistema.
  * @author Bruno
  * @param <T>
  */
 public interface Dao<T> {
     
     /**
-     *
+     * Funcionalidade de inclusão.
      * @param t
      */
     void inserir(T t);
 
     /**
-     *
+     * Funcionalidade de atualização.
      * @param t
      */
     void atualizar(T t );
 
     /**
-     *
+     * Fucionalidade de exclusão.
      * @param t
      */
     void deletar(Serializable t);
     
     /**
-     *
+     * Funcionalidade de busca por Id.
      * @param id
      * @return
      */
     T buscarPorId(Serializable id);
     
     /**
-     *
+     * Funcionalidade de listagem.
      * @return
      */
     List<T> listarTodos();
     
-}
+} // fim da interface Dao

@@ -23,36 +23,36 @@ import javax.interceptor.Interceptors;
 public class PlataformaServiceImpl implements PlataformaService {
     
     @Inject
-    private PlataformaDao pd;
+    private PlataformaDao plataformaDao;
 
     @Override
     @Logavel
     public void cadastrarPlataforma(Plataforma plataforma) {
-        pd.inserir(plataforma);
+        plataformaDao.inserir(plataforma);
     }
 
     @Override
     @Logavel
     public void atualizarPlataforma(Plataforma plataforma) {
-        pd.atualizar(plataforma);
+        plataformaDao.atualizar(plataforma);
     }
 
     @Override
     @Logavel
     public void deletarPlataforma(Plataforma plataforma) {
-        pd.deletar(plataforma.getId());
+        plataformaDao.deletar(plataforma.getId());
     }
 
     @Override
     @Logavel
     public List<Plataforma> listarTodasPlataformas() {
-        return pd.listarTodos();
+        return plataformaDao.listarTodos();
     }
 
     @Override
     @Logavel
     public Plataforma buscarPorId(Serializable id) {
-        return pd.buscarPorId(id);
+        return plataformaDao.buscarPorId(id);
     }
     
 }

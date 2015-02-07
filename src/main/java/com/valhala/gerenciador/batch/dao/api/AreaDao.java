@@ -8,9 +8,9 @@ package com.valhala.gerenciador.batch.dao.api;
 import com.valhala.gerenciador.batch.modelo.Area;
 
 /**
- *
+ * Interface que define o que um DAO faz especificamente com a Entidade Area.
  * @author Bruno
  */
 public interface AreaDao extends Dao<Area> {
     
-}
+} // fim da interface AreaDao

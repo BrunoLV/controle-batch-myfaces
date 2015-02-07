@@ -25,34 +25,34 @@ import javax.interceptor.Interceptors;
 public class AreaServiceFacadeImpl implements AreaServiceFacade {
     
     @Inject
-    private AreaService as;
+    private AreaService areaService;
 
     @Override @Transacionavel
     public void cadastrarArea(AreaVO areaVO) {
         Area a;
         a = AreaVO.returnAsModel(areaVO);
-        this.as.cadastrarArea(a);
+        this.areaService.cadastrarArea(a);
     } // fim do metodo cadastrarArea
 
     @Override @Transacionavel
     public void atualizarArea(AreaVO areaVO) {
         Area a;
         a = AreaVO.returnAsModel(areaVO);
-        this.as.atualizarArea(a);
+        this.areaService.atualizarArea(a);
     } // fim do metodo atualizarArea
 
     @Override @Transacionavel
     public void deletarArea(AreaVO areaVO) {
         Area a;
         a = AreaVO.returnAsModel(areaVO);
-        this.as.deletarArea(a);
+        this.areaService.deletarArea(a);
     } // fim do metodo deletarArea
 
     @Override
     public List<AreaVO> listarTodasAreas() {
         List<Area> areas;
         List<AreaVO> areaVOs;
-        areas = this.as.listarTodasAreas();
+        areas = this.areaService.listarTodasAreas();
         areaVOs = new ArrayList<>();
         for (Area a : areas) {
             AreaVO o = AreaVO.createFromModel(a);

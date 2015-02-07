@@ -26,31 +26,31 @@ import javax.interceptor.Interceptors;
 public class PlataformaServiceFacadeImpl implements PlataformaServiceFacade {
     
     @Inject
-    private PlataformaService ps;
+    private PlataformaService plataformaService;
 
     @Override @Logavel @Transacionavel
     public void cadastrarArea(PlataformaVO vO) {
         Plataforma p = PlataformaVO.returnAsModel(vO);
-        this.ps.cadastrarPlataforma(p);
+        this.plataformaService.cadastrarPlataforma(p);
     }
 
     @Override @Logavel @Transacionavel
     public void atualizarArea(PlataformaVO vO) {
         Plataforma p = PlataformaVO.returnAsModel(vO);
-        this.ps.atualizarPlataforma(p);
+        this.plataformaService.atualizarPlataforma(p);
     }
 
     @Override @Logavel @Transacionavel
     public void deletarArea(PlataformaVO vO) {
         Plataforma p = PlataformaVO.returnAsModel(vO);
-        this.ps.deletarPlataforma(p);
+        this.plataformaService.deletarPlataforma(p);
     }
 
     @Override @Logavel
     public List<PlataformaVO> listarTodasPlataformas() {
         List<Plataforma> plataformas;
         List<PlataformaVO> vOs;
-        plataformas = this.ps.listarTodasPlataformas();
+        plataformas = this.plataformaService.listarTodasPlataformas();
         vOs = new ArrayList<>();
         for (Plataforma plataforma : plataformas) {
             PlataformaVO vO = PlataformaVO.createFromModel(plataforma);

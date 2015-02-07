@@ -40,10 +40,14 @@ public class ProgramaMB extends BaseMB implements Serializable {
     
     private String[] servidoresSelecionados;
     
-    @Inject private AreaServiceFacade areaService;
-    @Inject private ServidorServiceFacade servidorService;
-    @Inject private PlataformaServiceFacade plataformaService;
-    @Inject private ProgramaServiceFacade programaService;
+    @Inject 
+    private AreaServiceFacade areaService;
+    @Inject 
+    private ServidorServiceFacade servidorService;
+    @Inject 
+    private PlataformaServiceFacade plataformaService;
+    @Inject 
+    private ProgramaServiceFacade programaService;
     
     @PostConstruct
     public void init() {

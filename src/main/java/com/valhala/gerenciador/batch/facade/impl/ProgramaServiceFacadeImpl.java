@@ -30,10 +30,14 @@ import javax.interceptor.Interceptors;
 @Interceptors({LogInterceptor.class, TransactionInterceptor.class})
 public class ProgramaServiceFacadeImpl implements ProgramaServiceFacade {
 
-    @Inject private ProgramaService programaService;
-    @Inject private AreaService areaService;
-    @Inject private PlataformaService plataformaService;
-    @Inject private ServidorService servidorService;
+    @Inject 
+    private ProgramaService programaService;
+    @Inject 
+    private AreaService areaService;
+    @Inject 
+    private PlataformaService plataformaService;
+    @Inject 
+    private ServidorService servidorService;
     
     @Override @Logavel @Transacionavel
     public void cadastrarPrograma(ProgramaVO vO) {

@@ -11,7 +11,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Implementacao de AreaDao
  * @author Bruno
  */
 public class AreaDaoImpl extends BaseDao<Area> implements AreaDao {
@@ -19,7 +19,7 @@ public class AreaDaoImpl extends BaseDao<Area> implements AreaDao {
     public AreaDaoImpl() {
         super();
         classePersistente = Area.class;
-    }
+    } // fim do método construtor
     
     @Override
     public List<Area> listarTodos() {
@@ -27,6 +27,6 @@ public class AreaDaoImpl extends BaseDao<Area> implements AreaDao {
         TypedQuery<Area> tq = em.createQuery(jpql, Area.class);
         List<Area> areas = tq.getResultList();
         return areas;
-    }
+    } // fim do metodo listarTodos
     
-}
+} // fim da classe AreaDaoImpl

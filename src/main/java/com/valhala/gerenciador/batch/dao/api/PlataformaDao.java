@@ -8,9 +8,9 @@ package com.valhala.gerenciador.batch.dao.api;
 import com.valhala.gerenciador.batch.modelo.Plataforma;
 
 /**
- *
+ * Interface que define o que um DAO faz especificamente com a Entidade Plataforma.
  * @author Bruno
  */
 public interface PlataformaDao extends Dao<Plataforma> {
     
-}
+} // fim da interface PlataformaDao

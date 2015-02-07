@@ -41,7 +41,7 @@ public class AreaMB extends BaseMB implements Serializable {
     }
 
     @Inject
-    private AreaServiceFacade asf;
+    private AreaServiceFacade areaService;
 
     /**
      * Metodo utilizado para acao de salvar o que foi feito pelo usuario via tela.
@@ -50,11 +50,11 @@ public class AreaMB extends BaseMB implements Serializable {
     public void salvar() {
         try {
             if (areaVO.getId() != null && areaVO.getId().intValue() > 0) {
-                this.asf.atualizarArea(areaVO);
+                this.areaService.atualizarArea(areaVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Area de negocio atualizada com sucesso.");
             } else {
                 areaVO.setId(null);
-                this.asf.cadastrarArea(areaVO);
+                this.areaService.cadastrarArea(areaVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Area de negocio inserida com sucesso.");
             } // fim do bloco if/else
         } finally {
@@ -68,7 +68,7 @@ public class AreaMB extends BaseMB implements Serializable {
      */
     public void deletar(AreaVO areaVO) {
         try {
-            this.asf.deletarArea(areaVO);
+            this.areaService.deletarArea(areaVO);
             inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Area de negocio removida com sucesso.");
         } finally {
             init();
@@ -116,7 +116,7 @@ public class AreaMB extends BaseMB implements Serializable {
     }
     
     private List<AreaVO> montarLista()  {
-        List<AreaVO> os = this.asf.listarTodasAreas();
+        List<AreaVO> os = this.areaService.listarTodasAreas();
         if (os == null) {
             os = new ArrayList<>();
         } // fim do bloco if

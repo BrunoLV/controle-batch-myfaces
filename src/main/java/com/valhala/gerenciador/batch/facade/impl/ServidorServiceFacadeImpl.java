@@ -25,31 +25,31 @@ import javax.interceptor.Interceptors;
 public class ServidorServiceFacadeImpl implements ServidorServiceFacade {
     
     @Inject
-    private ServidorService ss;
+    private ServidorService servidorService;
 
     @Override @Logavel @Transacionavel
     public void cadastrarServidor(ServidorVO vO) {
         Servidor p = ServidorVO.returnAsModel(vO);
-        this.ss.cadastrarServidor(p);
+        this.servidorService.cadastrarServidor(p);
     }
 
     @Override @Logavel @Transacionavel
     public void atualizarServidor(ServidorVO vO) {
         Servidor p = ServidorVO.returnAsModel(vO);
-        this.ss.atualizarServidor(p);
+        this.servidorService.atualizarServidor(p);
     }
 
     @Override @Logavel @Transacionavel
     public void deletarServidor(ServidorVO vO) {
         Servidor p = ServidorVO.returnAsModel(vO);
-        this.ss.deletarServidor(p);
+        this.servidorService.deletarServidor(p);
     }
 
     @Override @Logavel
     public List<ServidorVO> listarTodosServidores() {
         List<Servidor> servidores;
         List<ServidorVO> vOs;
-        servidores = this.ss.listarTodosServidores();
+        servidores = this.servidorService.listarTodosServidores();
         vOs = new ArrayList<>();
         for (Servidor servidor : servidores) {
             ServidorVO vO = ServidorVO.createFromModel(servidor);

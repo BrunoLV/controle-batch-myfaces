@@ -23,36 +23,36 @@ import javax.interceptor.Interceptors;
 public class AreaServiceImpl implements AreaService {
 
     @Inject
-    private AreaDao ad;
+    private AreaDao areaDao;
 
     @Override
     @Logavel 
     public void cadastrarArea(Area area) {
-            ad.inserir(area);
+        areaDao.inserir(area);
     }
 
     @Override
     @Logavel 
     public void atualizarArea(Area area) {
-        ad.atualizar(area);
+        areaDao.atualizar(area);
     }
 
     @Override
     @Logavel
     public List<Area> listarTodasAreas() {
-        return ad.listarTodos();
+        return areaDao.listarTodos();
     }
 
     @Override
     @Logavel
     public void deletarArea(Area area) {
-        ad.deletar(area.getId());
+        areaDao.deletar(area.getId());
     }
 
     @Override
     @Logavel
     public Area buscarPorId(Serializable id) {
-        return ad.buscarPorId(id);
+        return areaDao.buscarPorId(id);
     }
 
 }

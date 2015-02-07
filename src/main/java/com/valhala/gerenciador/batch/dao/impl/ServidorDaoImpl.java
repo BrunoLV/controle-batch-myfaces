@@ -11,14 +11,15 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Implementação de ServidorDao
  * @author Bruno
  */
 public class ServidorDaoImpl extends BaseDao<Servidor> implements ServidorDao {
 
     public ServidorDaoImpl() {
+        super();
         classePersistente =  Servidor.class;
-    }
+    } // fim do construtor
     
     @Override
     public List<Servidor> listarTodos() {
@@ -26,6 +27,6 @@ public class ServidorDaoImpl extends BaseDao<Servidor> implements ServidorDao {
         TypedQuery tq = em.createQuery(jpql, Servidor.class);
         List<Servidor> servidores = tq.getResultList();
         return servidores;
-    }
+    } // fim do metodo listarTodos
     
-}
+} // fim da classe ServidorDaoImpl

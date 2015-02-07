@@ -12,14 +12,15 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Implementacao de ProgramaDao
  * @author Bruno
  */
 public class ProgramaDaoImpl extends BaseDao<Programa> implements ProgramaDao {
 
     public ProgramaDaoImpl() {
+        super();
         classePersistente = Programa.class;
-    }
+    } // fim do construtor
 
     @Override
     public List<Programa> listarTodos() {
@@ -27,7 +28,7 @@ public class ProgramaDaoImpl extends BaseDao<Programa> implements ProgramaDao {
         TypedQuery<Programa> tq = em.createQuery(jpql, Programa.class);
         List<Programa> programas = tq.getResultList();
         return programas;
-    }
+    } // fim do metodo listarTodos
 
     @Override
     public Programa buscarProgramaTrazendoServidores(Serializable id) {
@@ -36,6 +37,6 @@ public class ProgramaDaoImpl extends BaseDao<Programa> implements ProgramaDao {
         tq.setParameter("id", id);
         Programa p = tq.getSingleResult();
         return p;
-    }
+    } // fim do metodo buscarProgramaTrazendoServidores
     
-}
+} // fim da classe ProgramaDaoImpl

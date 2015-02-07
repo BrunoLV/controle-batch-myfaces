@@ -19,36 +19,36 @@ import javax.inject.Inject;
 public class ProgramaServiceImpl implements ProgramaService {
     
     @Inject
-    private ProgramaDao pd;
+    private ProgramaDao programaDao;
     
     @Override
     @Logavel
     public void cadastrarPrograma(Programa programa) {
-        pd.inserir(programa);
+        programaDao.inserir(programa);
     }
 
     @Override
     @Logavel
     public void atualizarPrograma(Programa programa) {
-        pd.atualizar(programa);
+        programaDao.atualizar(programa);
     }
 
     @Override
     @Logavel
     public void deletarPrograma(Programa programa) {
-        pd.deletar(programa.getId());
+        programaDao.deletar(programa.getId());
     }
 
     @Override
     @Logavel
     public List<Programa> listarTodosProgramas() {
-        return pd.listarTodos();
+        return programaDao.listarTodos();
     }
 
     @Override
     @Logavel
     public Programa buscarProgramaJuntoComServidor(Programa p) {
-        return pd.buscarProgramaTrazendoServidores(p.getId());
+        return programaDao.buscarProgramaTrazendoServidores(p.getId());
     }
     
 }

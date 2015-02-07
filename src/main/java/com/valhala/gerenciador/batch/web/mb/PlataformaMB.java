@@ -32,7 +32,7 @@ public class PlataformaMB extends BaseMB implements Serializable {
     private List<PlataformaVO> plataformas;
     
     @Inject
-    private PlataformaServiceFacade psf;
+    private PlataformaServiceFacade plataformaService;
     
     @PostConstruct
     public void init() {
@@ -63,11 +63,11 @@ public class PlataformaMB extends BaseMB implements Serializable {
     public void salvar() {
         try {
             if (plataformaVO.getId() != null && plataformaVO.getId().intValue() > 0) {
-                this.psf.atualizarArea(plataformaVO);
+                this.plataformaService.atualizarArea(plataformaVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Plataforma atualizada com sucesso.");
             } else {
                 plataformaVO.setId(null);
-                this.psf.cadastrarArea(plataformaVO);
+                this.plataformaService.cadastrarArea(plataformaVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Plataforma inserida com sucesso.");
             } // fim do bloco if/else
         } finally {
@@ -81,7 +81,7 @@ public class PlataformaMB extends BaseMB implements Serializable {
      */
     public void deletar(PlataformaVO plataformaVO) {
         try {
-            this.psf.deletarArea(plataformaVO);
+            this.plataformaService.deletarArea(plataformaVO);
             inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Plataforma removida com sucesso.");
         } finally {
             init();
@@ -97,7 +97,7 @@ public class PlataformaMB extends BaseMB implements Serializable {
     }
     
     private List<PlataformaVO> montarLista() {
-        List<PlataformaVO> vOs = this.psf.listarTodasPlataformas();
+        List<PlataformaVO> vOs = this.plataformaService.listarTodasPlataformas();
         if (vOs == null) {
             vOs = new ArrayList<>();
         }

@@ -8,9 +8,9 @@ package com.valhala.gerenciador.batch.dao.api;
 import com.valhala.gerenciador.batch.modelo.Servidor;
 
 /**
- *
+ * Interface que define o que um DAO faz especificamente com a Entidade Servidor.
  * @author Bruno
  */
 public interface ServidorDao extends Dao<Servidor> {
     
-}
+} // fim da interface ServidorDao

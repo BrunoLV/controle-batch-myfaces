@@ -23,36 +23,36 @@ import javax.interceptor.Interceptors;
 public class ServidorServiceImpl implements ServidorService {
     
     @Inject
-    private ServidorDao sd;
+    private ServidorDao servidorDao;
 
     @Override
     @Logavel
     public void cadastrarServidor(Servidor servidor) {
-        sd.inserir(servidor);
+        servidorDao.inserir(servidor);
     }
 
     @Override
     @Logavel
     public void atualizarServidor(Servidor servidor) {
-        sd.atualizar(servidor);
+        servidorDao.atualizar(servidor);
     }
 
     @Override
     @Logavel
     public void deletarServidor(Servidor servidor) {
-        sd.deletar(servidor.getId());
+        servidorDao.deletar(servidor.getId());
     }
 
     @Override
     @Logavel
     public List<Servidor> listarTodosServidores() {
-        return sd.listarTodos();
+        return servidorDao.listarTodos();
     }
 
     @Override
     @Logavel
     public Servidor buscarPorId(Serializable id) {
-        return sd.buscarPorId(id);
+        return servidorDao.buscarPorId(id);
     }
     
 }

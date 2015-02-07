@@ -32,7 +32,7 @@ public class ServidorMB extends BaseMB implements Serializable {
     private List<ServidorVO> servidores;
     
     @Inject
-    private ServidorServiceFacade ssf;
+    private ServidorServiceFacade servidorService;
     
     @PostConstruct
     public void init() {
@@ -63,11 +63,11 @@ public class ServidorMB extends BaseMB implements Serializable {
     public void salvar() {
         try {
             if (servidorVO.getId() != null && servidorVO.getId().intValue() > 0) {
-                this.ssf.atualizarServidor(servidorVO);
+                this.servidorService.atualizarServidor(servidorVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Servidor de negocio atualizada com sucesso.");
             } else {
                 servidorVO.setId(null);
-                this.ssf.cadastrarServidor(servidorVO);
+                this.servidorService.cadastrarServidor(servidorVO);
                 inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Servidor de negocio inserida com sucesso.");
             } // fim do bloco if/else
         } finally {
@@ -81,7 +81,7 @@ public class ServidorMB extends BaseMB implements Serializable {
      */
     public void deletar(ServidorVO servidorVO) {
         try {
-            this.ssf.deletarServidor(servidorVO);
+            this.servidorService.deletarServidor(servidorVO);
             inserirMensagem(FacesMessage.SEVERITY_INFO, "Sucesso", "Servidor de negocio removida com sucesso.");
         } finally {
             init();
@@ -101,7 +101,7 @@ public class ServidorMB extends BaseMB implements Serializable {
     }
     
     private List<ServidorVO> montarLista() {
-        List<ServidorVO> vOs = this.ssf.listarTodosServidores();
+        List<ServidorVO> vOs = this.servidorService.listarTodosServidores();
         if (vOs == null) {
             vOs = new ArrayList<>();
         }
